@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "package": "vectorwing.farmersdelight.common.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "CampfireBaleMixin",
+    "CuttingBoardDispenserMixin",
+    "KeepRichSoilGiantTreeMixin",
+    "KeepRichSoilTreeMixin"
+  ],
+  "client": [
+    "CanvasSignEditScreenMixin",
+    "HideBlockBreakProgressMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8"
+}
