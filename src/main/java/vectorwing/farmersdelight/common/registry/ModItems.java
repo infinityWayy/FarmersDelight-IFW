@@ -257,204 +257,200 @@ public class ModItems
 	public static final Supplier<Item> RICE = registerWithTab("rice",
 			() -> new RiceItem(ModBlocks.RICE_CROP.get(), basicItem()));
 	public static final Supplier<Item> CABBAGE_SEEDS = registerWithTab("cabbage_seeds", () -> new ItemNameBlockItem(ModBlocks.CABBAGE_CROP.get(), basicItem()));
-	public static final Supplier<Item> TOMATO_SEEDS = registerWithTab("tomato_seeds", () -> new ItemNameBlockItem(ModBlocks.BUDDING_TOMATO_CROP.get(), basicItem())
-	{
+	public static final Supplier<Item> TOMATO_SEEDS = registerWithTab("tomato_seeds", () -> new ItemNameBlockItem(ModBlocks.BUDDING_TOMATO_CROP.get(), basicItem()) {
+
 		@Override
 		public void registerBlocks(Map<Block, Item> blockToItemMap, Item item) {
 			super.registerBlocks(blockToItemMap, item);
 			blockToItemMap.put(ModBlocks.TOMATO_CROP.get(), item);
 		}
 
-		@Override
-		public void removeFromBlockToItemMap(Map<Block, Item> blockToItemMap, Item itemIn) {
-			super.removeFromBlockToItemMap(blockToItemMap, itemIn);
-			blockToItemMap.remove(ModBlocks.TOMATO_CROP.get());
-		}
 	});
-	public static final Supplier<Item> ROTTEN_TOMATO = registerWithTab("rotten_tomato",
-			() -> new RottenTomatoItem(new Item.Properties().stacksTo(16)));
 
-	// Foodstuffs
-	public static final Supplier<Item> FRIED_EGG = registerWithTab("fried_egg",
-			() -> new Item(foodItem(FoodValues.FRIED_EGG).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(48000).insulinResponse(0).build())));
-	public static final Supplier<Item> MILK_BOTTLE = registerWithTab("milk_bottle",
-			() -> new MilkBottleItem(drinkItem().component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(8000).insulinResponse(0).build())));
-	public static final Supplier<Item> HOT_COCOA = registerWithTab("hot_cocoa",
-			() -> new HotCocoaItem(drinkItem().component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(8000).insulinResponse(4800).build())));
-	public static final Supplier<Item> APPLE_CIDER = registerWithTab("apple_cider",
-			() -> new DrinkableItem(drinkItem().food(FoodValues.APPLE_CIDER).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(16000).protein(0).insulinResponse(4800).build()), true, false));
-	public static final Supplier<Item> MELON_JUICE = registerWithTab("melon_juice",
-			() -> new HotCocoaItem(drinkItem().component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(32000).protein(0).insulinResponse(24000).build())));
-	public static final Supplier<Item> TOMATO_SAUCE = registerWithTab("tomato_sauce",
-			() -> new Item(foodItem(FoodValues.TOMATO_SAUCE).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(16000).protein(0).insulinResponse(0).build())));
-	public static final Supplier<Item> WHEAT_DOUGH = registerWithTab("wheat_dough",
-			() -> new Item(foodItem(FoodValues.WHEAT_DOUGH)));
-	public static final Supplier<Item> RAW_PASTA = registerWithTab("raw_pasta",
-			() -> new Item(foodItem(FoodValues.RAW_PASTA)));
-	public static final Supplier<Item> PUMPKIN_SLICE = registerWithTab("pumpkin_slice",
-			() -> new Item(foodItem(FoodValues.PUMPKIN_SLICE).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(4000).protein(0).insulinResponse(0).build())));
-	public static final Supplier<Item> CABBAGE_LEAF = registerWithTab("cabbage_leaf",
-			() -> new Item(foodItem(FoodValues.CABBAGE_LEAF).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(4000).protein(0).insulinResponse(0).build())));
-	public static final Supplier<Item> MINCED_BEEF = registerWithTab("minced_beef",
-			() -> new Item(foodItem(FoodValues.MINCED_BEEF).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(20000).insulinResponse(0).build())));
-	public static final Supplier<Item> BEEF_PATTY = registerWithTab("beef_patty",
-			() -> new Item(foodItem(FoodValues.BEEF_PATTY).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(40000).insulinResponse(0).build())));
-	public static final Supplier<Item> CHICKEN_CUTS = registerWithTab("chicken_cuts",
-			() -> new Item(foodItem(FoodValues.CHICKEN_CUTS).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(12000).insulinResponse(0).build())));
-	public static final Supplier<Item> COOKED_CHICKEN_CUTS = registerWithTab("cooked_chicken_cuts",
-			() -> new Item(foodItem(FoodValues.CHICKEN_CUTS).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(24000).insulinResponse(0).build())));
-	public static final Supplier<Item> BACON = registerWithTab("bacon",
-			() -> new Item(foodItem(FoodValues.BACON).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(16000).insulinResponse(0).build())));
-	public static final Supplier<Item> COOKED_BACON = registerWithTab("cooked_bacon",
-			() -> new Item(foodItem(FoodValues.COOKED_BACON).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(32000).insulinResponse(0).build())));
-	public static final Supplier<Item> COD_SLICE = registerWithTab("cod_slice",
-			() -> new Item(foodItem(FoodValues.COD_SLICE).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(8000).insulinResponse(0).build())));
-	public static final Supplier<Item> COOKED_COD_SLICE = registerWithTab("cooked_cod_slice",
-			() -> new Item(foodItem(FoodValues.COOKED_COD_SLICE).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(20000).insulinResponse(0).build())));
-	public static final Supplier<Item> SALMON_SLICE = registerWithTab("salmon_slice",
-			() -> new Item(foodItem(FoodValues.SALMON_SLICE).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(8000).insulinResponse(0).build())));
-	public static final Supplier<Item> COOKED_SALMON_SLICE = registerWithTab("cooked_salmon_slice",
-			() -> new Item(foodItem(FoodValues.COOKED_SALMON_SLICE).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(24000).insulinResponse(0).build())));
-	public static final Supplier<Item> MUTTON_CHOPS = registerWithTab("mutton_chops",
-			() -> new Item(foodItem(FoodValues.MUTTON_CHOPS).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(12000).insulinResponse(0).build())));
-	public static final Supplier<Item> COOKED_MUTTON_CHOPS = registerWithTab("cooked_mutton_chops",
-			() -> new Item(foodItem(FoodValues.COOKED_MUTTON_CHOPS).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(24000).insulinResponse(0).build())));
-	public static final Supplier<Item> HAM = registerWithTab("ham",
-			() -> new Item(foodItem(FoodValues.HAM).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(40000).insulinResponse(0).build())));
-	public static final Supplier<Item> SMOKED_HAM = registerWithTab("smoked_ham",
-			() -> new Item(foodItem(FoodValues.SMOKED_HAM).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(80000).insulinResponse(0).build())));
+		public static final Supplier<Item> ROTTEN_TOMATO = registerWithTab("rotten_tomato",
+				() -> new RottenTomatoItem(new Item.Properties().stacksTo(16)));
 
-	// Sweets
-	public static final Supplier<Item> PIE_CRUST = registerWithTab("pie_crust",
-			() -> new Item(foodItem(FoodValues.PIE_CRUST).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(8000).insulinResponse(0).build())));
-	public static final Supplier<Item> APPLE_PIE = registerWithTab("apple_pie",
-			() -> new BlockItem(ModBlocks.APPLE_PIE.get(), basicItem()));
-	public static final Supplier<Item> SWEET_BERRY_CHEESECAKE = registerWithTab("sweet_berry_cheesecake",
-			() -> new BlockItem(ModBlocks.SWEET_BERRY_CHEESECAKE.get(), basicItem()));
-	public static final Supplier<Item> CHOCOLATE_PIE = registerWithTab("chocolate_pie",
-			() -> new BlockItem(ModBlocks.CHOCOLATE_PIE.get(), basicItem()));
-	public static final Supplier<Item> CAKE_SLICE = registerWithTab("cake_slice",
-			() -> new Item(foodItem(FoodValues.CAKE_SLICE)));
-	public static final Supplier<Item> APPLE_PIE_SLICE = registerWithTab("apple_pie_slice",
-			() -> new Item(foodItem(FoodValues.PIE_SLICE).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(6000).protein(2000).insulinResponse(2400).build())));
-	public static final Supplier<Item> SWEET_BERRY_CHEESECAKE_SLICE = registerWithTab("sweet_berry_cheesecake_slice",
-			() -> new Item(foodItem(FoodValues.PIE_SLICE).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(12000).protein(6000).insulinResponse(7200).build())));
-	public static final Supplier<Item> CHOCOLATE_PIE_SLICE = registerWithTab("chocolate_pie_slice",
-			() -> new Item(foodItem(FoodValues.PIE_SLICE).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(8000).insulinResponse(2400).build())));
-	public static final Supplier<Item> SWEET_BERRY_COOKIE = registerWithTab("sweet_berry_cookie",
-			() -> new Item(foodItem(FoodValues.COOKIES).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(1000).protein(0).insulinResponse(480).build())));
-	public static final Supplier<Item> HONEY_COOKIE = registerWithTab("honey_cookie",
-			() -> new Item(foodItem(FoodValues.COOKIES).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(0).insulinResponse(1400).build())));
-	public static final Supplier<Item> MELON_POPSICLE = registerWithTab("melon_popsicle",
-			() -> new Item(foodItem(FoodValues.POPSICLE).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(32000).protein(0).insulinResponse(19200).build())));
-	public static final Supplier<Item> GLOW_BERRY_CUSTARD = registerWithTab("glow_berry_custard",
-			() -> new ConsumableItem(foodItem(FoodValues.GLOW_BERRY_CUSTARD).craftRemainder(Items.GLASS_BOTTLE).stacksTo(16).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(8000).protein(32000).insulinResponse(9600).build())));
-	public static final Supplier<Item> FRUIT_SALAD = registerWithTab("fruit_salad",
-			() -> new ConsumableItem(bowlFoodItem(FoodValues.FRUIT_SALAD).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(44000).protein(0).insulinResponse(19200).build()), true));
+		// Foodstuffs
+		public static final Supplier<Item> FRIED_EGG = registerWithTab("fried_egg",
+				() -> new Item(foodItem(FoodValues.FRIED_EGG).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(48000).insulinResponse(0).build())));
+		public static final Supplier<Item> MILK_BOTTLE = registerWithTab("milk_bottle",
+				() -> new MilkBottleItem(drinkItem().component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(8000).insulinResponse(0).build())));
+		public static final Supplier<Item> HOT_COCOA = registerWithTab("hot_cocoa",
+				() -> new HotCocoaItem(drinkItem().component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(8000).insulinResponse(4800).build())));
+		public static final Supplier<Item> APPLE_CIDER = registerWithTab("apple_cider",
+				() -> new DrinkableItem(drinkItem().food(FoodValues.APPLE_CIDER).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(16000).protein(0).insulinResponse(4800).build()), true, false));
+		public static final Supplier<Item> MELON_JUICE = registerWithTab("melon_juice",
+				() -> new HotCocoaItem(drinkItem().component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(32000).protein(0).insulinResponse(24000).build())));
+		public static final Supplier<Item> TOMATO_SAUCE = registerWithTab("tomato_sauce",
+				() -> new Item(foodItem(FoodValues.TOMATO_SAUCE).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(16000).protein(0).insulinResponse(0).build())));
+		public static final Supplier<Item> WHEAT_DOUGH = registerWithTab("wheat_dough",
+				() -> new Item(foodItem(FoodValues.WHEAT_DOUGH)));
+		public static final Supplier<Item> RAW_PASTA = registerWithTab("raw_pasta",
+				() -> new Item(foodItem(FoodValues.RAW_PASTA)));
+		public static final Supplier<Item> PUMPKIN_SLICE = registerWithTab("pumpkin_slice",
+				() -> new Item(foodItem(FoodValues.PUMPKIN_SLICE).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(4000).protein(0).insulinResponse(0).build())));
+		public static final Supplier<Item> CABBAGE_LEAF = registerWithTab("cabbage_leaf",
+				() -> new Item(foodItem(FoodValues.CABBAGE_LEAF).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(4000).protein(0).insulinResponse(0).build())));
+		public static final Supplier<Item> MINCED_BEEF = registerWithTab("minced_beef",
+				() -> new Item(foodItem(FoodValues.MINCED_BEEF).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(20000).insulinResponse(0).build())));
+		public static final Supplier<Item> BEEF_PATTY = registerWithTab("beef_patty",
+				() -> new Item(foodItem(FoodValues.BEEF_PATTY).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(40000).insulinResponse(0).build())));
+		public static final Supplier<Item> CHICKEN_CUTS = registerWithTab("chicken_cuts",
+				() -> new Item(foodItem(FoodValues.CHICKEN_CUTS).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(12000).insulinResponse(0).build())));
+		public static final Supplier<Item> COOKED_CHICKEN_CUTS = registerWithTab("cooked_chicken_cuts",
+				() -> new Item(foodItem(FoodValues.CHICKEN_CUTS).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(24000).insulinResponse(0).build())));
+		public static final Supplier<Item> BACON = registerWithTab("bacon",
+				() -> new Item(foodItem(FoodValues.BACON).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(16000).insulinResponse(0).build())));
+		public static final Supplier<Item> COOKED_BACON = registerWithTab("cooked_bacon",
+				() -> new Item(foodItem(FoodValues.COOKED_BACON).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(32000).insulinResponse(0).build())));
+		public static final Supplier<Item> COD_SLICE = registerWithTab("cod_slice",
+				() -> new Item(foodItem(FoodValues.COD_SLICE).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(8000).insulinResponse(0).build())));
+		public static final Supplier<Item> COOKED_COD_SLICE = registerWithTab("cooked_cod_slice",
+				() -> new Item(foodItem(FoodValues.COOKED_COD_SLICE).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(20000).insulinResponse(0).build())));
+		public static final Supplier<Item> SALMON_SLICE = registerWithTab("salmon_slice",
+				() -> new Item(foodItem(FoodValues.SALMON_SLICE).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(8000).insulinResponse(0).build())));
+		public static final Supplier<Item> COOKED_SALMON_SLICE = registerWithTab("cooked_salmon_slice",
+				() -> new Item(foodItem(FoodValues.COOKED_SALMON_SLICE).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(24000).insulinResponse(0).build())));
+		public static final Supplier<Item> MUTTON_CHOPS = registerWithTab("mutton_chops",
+				() -> new Item(foodItem(FoodValues.MUTTON_CHOPS).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(12000).insulinResponse(0).build())));
+		public static final Supplier<Item> COOKED_MUTTON_CHOPS = registerWithTab("cooked_mutton_chops",
+				() -> new Item(foodItem(FoodValues.COOKED_MUTTON_CHOPS).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(24000).insulinResponse(0).build())));
+		public static final Supplier<Item> HAM = registerWithTab("ham",
+				() -> new Item(foodItem(FoodValues.HAM).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(40000).insulinResponse(0).build())));
+		public static final Supplier<Item> SMOKED_HAM = registerWithTab("smoked_ham",
+				() -> new Item(foodItem(FoodValues.SMOKED_HAM).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(80000).insulinResponse(0).build())));
 
-	// Basic Meals
-	public static final Supplier<Item> MIXED_SALAD = registerWithTab("mixed_salad",
-			() -> new Item(foodItem(FoodValues.MIXED_SALAD).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(19000).protein(0).insulinResponse(0).build())));
-	public static final Supplier<Item> NETHER_SALAD = registerWithTab("nether_salad",
-			() -> new ConsumableItem(bowlFoodItem(FoodValues.NETHER_SALAD)));
-	public static final Supplier<Item> BARBECUE_STICK = registerWithTab("barbecue_stick",
-			() -> new Item(foodItem(FoodValues.BARBECUE_STICK).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(16000).protein(32000).insulinResponse(0).build())));
-	public static final Supplier<Item> EGG_SANDWICH = registerWithTab("egg_sandwich",
-			() -> new Item(foodItem(FoodValues.EGG_SANDWICH).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(96000).insulinResponse(0).build())));
-	public static final Supplier<Item> CHICKEN_SANDWICH = registerWithTab("chicken_sandwich",
-			() -> new Item(foodItem(FoodValues.CHICKEN_SANDWICH).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(24000).protein(32000).insulinResponse(0).build())));
-	public static final Supplier<Item> HAMBURGER = registerWithTab("hamburger",
-			() -> new Item(foodItem(FoodValues.HAMBURGER).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(24000).protein(40000).insulinResponse(0).build())));
-	public static final Supplier<Item> BACON_SANDWICH = registerWithTab("bacon_sandwich",
-			() -> new Item(foodItem(FoodValues.BACON_SANDWICH).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(16000).protein(32000).insulinResponse(0).build())));
-	public static final Supplier<Item> MUTTON_WRAP = registerWithTab("mutton_wrap",
-			() -> new Item(foodItem(FoodValues.MUTTON_WRAP).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(16000).protein(32000).insulinResponse(0).build())));
-	public static final Supplier<Item> DUMPLINGS = registerWithTab("dumplings",
-			() -> new Item(foodItem(FoodValues.DUMPLINGS).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(16000).protein(32000).insulinResponse(0).build())));
-	public static final Supplier<Item> STUFFED_POTATO = registerWithTab("stuffed_potato",
-			() -> new Item(foodItem(FoodValues.STUFFED_POTATO).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(80000).insulinResponse(0).build())));
-	public static final Supplier<Item> CABBAGE_ROLLS = registerWithTab("cabbage_rolls",
-			() -> new Item(foodItem(FoodValues.CABBAGE_ROLLS).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(8000).protein(32000).insulinResponse(0).build())));
-	public static final Supplier<Item> SALMON_ROLL = registerWithTab("salmon_roll",
-			() -> new Item(foodItem(FoodValues.SALMON_ROLL).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(8000).insulinResponse(0).build())));
-	public static final Supplier<Item> COD_ROLL = registerWithTab("cod_roll",
-			() -> new Item(foodItem(FoodValues.COD_ROLL).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(8000).insulinResponse(0).build())));
-	public static final Supplier<Item> KELP_ROLL = registerWithTab("kelp_roll",
-			() -> new Item(foodItem(FoodValues.KELP_ROLL).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(16000).protein(0).insulinResponse(0).build())));
-	public static final Supplier<Item> KELP_ROLL_SLICE = registerWithTab("kelp_roll_slice",
-			() -> new Item(foodItem(FoodValues.KELP_ROLL_SLICE).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(16000).protein(32000).insulinResponse(0).build())));
+		// Sweets
+		public static final Supplier<Item> PIE_CRUST = registerWithTab("pie_crust",
+				() -> new Item(foodItem(FoodValues.PIE_CRUST).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(8000).insulinResponse(0).build())));
+		public static final Supplier<Item> APPLE_PIE = registerWithTab("apple_pie",
+				() -> new BlockItem(ModBlocks.APPLE_PIE.get(), basicItem()));
+		public static final Supplier<Item> SWEET_BERRY_CHEESECAKE = registerWithTab("sweet_berry_cheesecake",
+				() -> new BlockItem(ModBlocks.SWEET_BERRY_CHEESECAKE.get(), basicItem()));
+		public static final Supplier<Item> CHOCOLATE_PIE = registerWithTab("chocolate_pie",
+				() -> new BlockItem(ModBlocks.CHOCOLATE_PIE.get(), basicItem()));
+		public static final Supplier<Item> CAKE_SLICE = registerWithTab("cake_slice",
+				() -> new Item(foodItem(FoodValues.CAKE_SLICE)));
+		public static final Supplier<Item> APPLE_PIE_SLICE = registerWithTab("apple_pie_slice",
+				() -> new Item(foodItem(FoodValues.PIE_SLICE).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(6000).protein(2000).insulinResponse(2400).build())));
+		public static final Supplier<Item> SWEET_BERRY_CHEESECAKE_SLICE = registerWithTab("sweet_berry_cheesecake_slice",
+				() -> new Item(foodItem(FoodValues.PIE_SLICE).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(12000).protein(6000).insulinResponse(7200).build())));
+		public static final Supplier<Item> CHOCOLATE_PIE_SLICE = registerWithTab("chocolate_pie_slice",
+				() -> new Item(foodItem(FoodValues.PIE_SLICE).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(8000).insulinResponse(2400).build())));
+		public static final Supplier<Item> SWEET_BERRY_COOKIE = registerWithTab("sweet_berry_cookie",
+				() -> new Item(foodItem(FoodValues.COOKIES).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(1000).protein(0).insulinResponse(480).build())));
+		public static final Supplier<Item> HONEY_COOKIE = registerWithTab("honey_cookie",
+				() -> new Item(foodItem(FoodValues.COOKIES).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(0).insulinResponse(1400).build())));
+		public static final Supplier<Item> MELON_POPSICLE = registerWithTab("melon_popsicle",
+				() -> new Item(foodItem(FoodValues.POPSICLE).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(32000).protein(0).insulinResponse(19200).build())));
+		public static final Supplier<Item> GLOW_BERRY_CUSTARD = registerWithTab("glow_berry_custard",
+				() -> new ConsumableItem(foodItem(FoodValues.GLOW_BERRY_CUSTARD).craftRemainder(Items.GLASS_BOTTLE).stacksTo(16).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(8000).protein(32000).insulinResponse(9600).build())));
+		public static final Supplier<Item> FRUIT_SALAD = registerWithTab("fruit_salad",
+				() -> new ConsumableItem(bowlFoodItem(FoodValues.FRUIT_SALAD).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(44000).protein(0).insulinResponse(19200).build()), true));
 
-	// Soups and Stews
-	public static final Supplier<Item> COOKED_RICE = registerWithTab("cooked_rice",
-			() -> new ConsumableItem(bowlFoodItem(FoodValues.COOKED_RICE), true));
-	public static final Supplier<Item> BONE_BROTH = registerWithTab("bone_broth",
-			() -> new ConsumableItem(bowlFoodItem(FoodValues.BONE_BROTH).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(8000).protein(8000).insulinResponse(0).build()), true));
-	public static final Supplier<Item> BEEF_STEW = registerWithTab("beef_stew",
-			() -> new ConsumableItem(bowlFoodItem(FoodValues.BEEF_STEW).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(16000).protein(80000).insulinResponse(0).build()), true));
-	public static final Supplier<Item> CHICKEN_SOUP = registerWithTab("chicken_soup",
-			() -> new ConsumableItem(bowlFoodItem(FoodValues.CHICKEN_SOUP).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(32000).protein(48000).insulinResponse(0).build()), true));
-	public static final Supplier<Item> VEGETABLE_SOUP = registerWithTab("vegetable_soup",
-			() -> new ConsumableItem(bowlFoodItem(FoodValues.VEGETABLE_SOUP).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(27000).protein(0).insulinResponse(0).build()), true));
-	public static final Supplier<Item> FISH_STEW = registerWithTab("fish_stew",
-			() -> new ConsumableItem(bowlFoodItem(FoodValues.FISH_STEW).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(24000).protein(32000).insulinResponse(0).build()), true));
-	public static final Supplier<Item> FRIED_RICE = registerWithTab("fried_rice",
-			() -> new ConsumableItem(bowlFoodItem(FoodValues.FRIED_RICE).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(24000).protein(24000).insulinResponse(0).build()), true));
-	public static final Supplier<Item> PUMPKIN_SOUP = registerWithTab("pumpkin_soup",
-			() -> new ConsumableItem(bowlFoodItem(FoodValues.PUMPKIN_SOUP).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(12000).protein(72000).insulinResponse(0).build()), true));
-	public static final Supplier<Item> BAKED_COD_STEW = registerWithTab("baked_cod_stew",
-			() -> new ConsumableItem(bowlFoodItem(FoodValues.BAKED_COD_STEW).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(8000).protein(80000).insulinResponse(0).build()), true));
-	public static final Supplier<Item> NOODLE_SOUP = registerWithTab("noodle_soup",
-			() -> new ConsumableItem(bowlFoodItem(FoodValues.NOODLE_SOUP).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(8000).protein(112000).insulinResponse(0).build()), true));
+		// Basic Meals
+		public static final Supplier<Item> MIXED_SALAD = registerWithTab("mixed_salad",
+				() -> new Item(foodItem(FoodValues.MIXED_SALAD).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(19000).protein(0).insulinResponse(0).build())));
+		public static final Supplier<Item> NETHER_SALAD = registerWithTab("nether_salad",
+				() -> new ConsumableItem(bowlFoodItem(FoodValues.NETHER_SALAD)));
+		public static final Supplier<Item> BARBECUE_STICK = registerWithTab("barbecue_stick",
+				() -> new Item(foodItem(FoodValues.BARBECUE_STICK).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(16000).protein(32000).insulinResponse(0).build())));
+		public static final Supplier<Item> EGG_SANDWICH = registerWithTab("egg_sandwich",
+				() -> new Item(foodItem(FoodValues.EGG_SANDWICH).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(96000).insulinResponse(0).build())));
+		public static final Supplier<Item> CHICKEN_SANDWICH = registerWithTab("chicken_sandwich",
+				() -> new Item(foodItem(FoodValues.CHICKEN_SANDWICH).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(24000).protein(32000).insulinResponse(0).build())));
+		public static final Supplier<Item> HAMBURGER = registerWithTab("hamburger",
+				() -> new Item(foodItem(FoodValues.HAMBURGER).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(24000).protein(40000).insulinResponse(0).build())));
+		public static final Supplier<Item> BACON_SANDWICH = registerWithTab("bacon_sandwich",
+				() -> new Item(foodItem(FoodValues.BACON_SANDWICH).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(16000).protein(32000).insulinResponse(0).build())));
+		public static final Supplier<Item> MUTTON_WRAP = registerWithTab("mutton_wrap",
+				() -> new Item(foodItem(FoodValues.MUTTON_WRAP).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(16000).protein(32000).insulinResponse(0).build())));
+		public static final Supplier<Item> DUMPLINGS = registerWithTab("dumplings",
+				() -> new Item(foodItem(FoodValues.DUMPLINGS).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(16000).protein(32000).insulinResponse(0).build())));
+		public static final Supplier<Item> STUFFED_POTATO = registerWithTab("stuffed_potato",
+				() -> new Item(foodItem(FoodValues.STUFFED_POTATO).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(80000).insulinResponse(0).build())));
+		public static final Supplier<Item> CABBAGE_ROLLS = registerWithTab("cabbage_rolls",
+				() -> new Item(foodItem(FoodValues.CABBAGE_ROLLS).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(8000).protein(32000).insulinResponse(0).build())));
+		public static final Supplier<Item> SALMON_ROLL = registerWithTab("salmon_roll",
+				() -> new Item(foodItem(FoodValues.SALMON_ROLL).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(8000).insulinResponse(0).build())));
+		public static final Supplier<Item> COD_ROLL = registerWithTab("cod_roll",
+				() -> new Item(foodItem(FoodValues.COD_ROLL).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(8000).insulinResponse(0).build())));
+		public static final Supplier<Item> KELP_ROLL = registerWithTab("kelp_roll",
+				() -> new Item(foodItem(FoodValues.KELP_ROLL).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(16000).protein(0).insulinResponse(0).build())));
+		public static final Supplier<Item> KELP_ROLL_SLICE = registerWithTab("kelp_roll_slice",
+				() -> new Item(foodItem(FoodValues.KELP_ROLL_SLICE).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(16000).protein(32000).insulinResponse(0).build())));
 
-	// Plated Meals
-	public static final Supplier<Item> BACON_AND_EGGS = registerWithTab("bacon_and_eggs",
-			() -> new ConsumableItem(bowlFoodItem(FoodValues.BACON_AND_EGGS).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(160000).insulinResponse(0).build()), true));
-	public static final Supplier<Item> PASTA_WITH_MEATBALLS = registerWithTab("pasta_with_meatballs",
-			() -> new ConsumableItem(bowlFoodItem(FoodValues.PASTA_WITH_MEATBALLS).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(16000).protein(40000).insulinResponse(0).build()), true));
-	public static final Supplier<Item> PASTA_WITH_MUTTON_CHOP = registerWithTab("pasta_with_mutton_chop",
-			() -> new ConsumableItem(bowlFoodItem(FoodValues.PASTA_WITH_MUTTON_CHOP).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(16000).protein(48000).insulinResponse(0).build()), true));
-	public static final Supplier<Item> MUSHROOM_RICE = registerWithTab("mushroom_rice",
-			() -> new ConsumableItem(bowlFoodItem(FoodValues.MUSHROOM_RICE).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(16000).protein(0).insulinResponse(0).build()), true));
-	public static final Supplier<Item> ROASTED_MUTTON_CHOPS = registerWithTab("roasted_mutton_chops",
-			() -> new ConsumableItem(bowlFoodItem(FoodValues.ROASTED_MUTTON_CHOPS).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(11000).protein(24000).insulinResponse(0).build()), true));
-	public static final Supplier<Item> VEGETABLE_NOODLES = registerWithTab("vegetable_noodles",
-			() -> new ConsumableItem(bowlFoodItem(FoodValues.VEGETABLE_NOODLES).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(24000).protein(0).insulinResponse(0).build()), true));
-	public static final Supplier<Item> STEAK_AND_POTATOES = registerWithTab("steak_and_potatoes",
-			() -> new ConsumableItem(bowlFoodItem(FoodValues.STEAK_AND_POTATOES).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(8000).protein(80000).insulinResponse(0).build()), true));
-	public static final Supplier<Item> RATATOUILLE = registerWithTab("ratatouille",
-			() -> new ConsumableItem(bowlFoodItem(FoodValues.RATATOUILLE).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(27000).protein(0).insulinResponse(0).build()), true));
-	public static final Supplier<Item> SQUID_INK_PASTA = registerWithTab("squid_ink_pasta",
-			() -> new ConsumableItem(bowlFoodItem(FoodValues.SQUID_INK_PASTA).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(8000).protein(48000).insulinResponse(0).build()), true));
-	public static final Supplier<Item> GRILLED_SALMON = registerWithTab("grilled_salmon",
-			() -> new ConsumableItem(bowlFoodItem(FoodValues.GRILLED_SALMON).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(24000).protein(48000).insulinResponse(0).build()), true));
+		// Soups and Stews
+		public static final Supplier<Item> COOKED_RICE = registerWithTab("cooked_rice",
+				() -> new ConsumableItem(bowlFoodItem(FoodValues.COOKED_RICE), true));
+		public static final Supplier<Item> BONE_BROTH = registerWithTab("bone_broth",
+				() -> new ConsumableItem(bowlFoodItem(FoodValues.BONE_BROTH).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(8000).protein(8000).insulinResponse(0).build()), true));
+		public static final Supplier<Item> BEEF_STEW = registerWithTab("beef_stew",
+				() -> new ConsumableItem(bowlFoodItem(FoodValues.BEEF_STEW).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(16000).protein(80000).insulinResponse(0).build()), true));
+		public static final Supplier<Item> CHICKEN_SOUP = registerWithTab("chicken_soup",
+				() -> new ConsumableItem(bowlFoodItem(FoodValues.CHICKEN_SOUP).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(32000).protein(48000).insulinResponse(0).build()), true));
+		public static final Supplier<Item> VEGETABLE_SOUP = registerWithTab("vegetable_soup",
+				() -> new ConsumableItem(bowlFoodItem(FoodValues.VEGETABLE_SOUP).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(27000).protein(0).insulinResponse(0).build()), true));
+		public static final Supplier<Item> FISH_STEW = registerWithTab("fish_stew",
+				() -> new ConsumableItem(bowlFoodItem(FoodValues.FISH_STEW).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(24000).protein(32000).insulinResponse(0).build()), true));
+		public static final Supplier<Item> FRIED_RICE = registerWithTab("fried_rice",
+				() -> new ConsumableItem(bowlFoodItem(FoodValues.FRIED_RICE).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(24000).protein(24000).insulinResponse(0).build()), true));
+		public static final Supplier<Item> PUMPKIN_SOUP = registerWithTab("pumpkin_soup",
+				() -> new ConsumableItem(bowlFoodItem(FoodValues.PUMPKIN_SOUP).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(12000).protein(72000).insulinResponse(0).build()), true));
+		public static final Supplier<Item> BAKED_COD_STEW = registerWithTab("baked_cod_stew",
+				() -> new ConsumableItem(bowlFoodItem(FoodValues.BAKED_COD_STEW).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(8000).protein(80000).insulinResponse(0).build()), true));
+		public static final Supplier<Item> NOODLE_SOUP = registerWithTab("noodle_soup",
+				() -> new ConsumableItem(bowlFoodItem(FoodValues.NOODLE_SOUP).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(8000).protein(112000).insulinResponse(0).build()), true));
 
-	// Feasts
-	public static final Supplier<Item> ROAST_CHICKEN_BLOCK = registerWithTab("roast_chicken_block",
-			() -> new BlockItem(ModBlocks.ROAST_CHICKEN_BLOCK.get(), basicItem().stacksTo(1)));
-	public static final Supplier<Item> ROAST_CHICKEN = registerWithTab("roast_chicken",
-			() -> new ConsumableItem(bowlFoodItem(FoodValues.ROAST_CHICKEN).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(10000).protein(18000).insulinResponse(0).build()), true));
+		// Plated Meals
+		public static final Supplier<Item> BACON_AND_EGGS = registerWithTab("bacon_and_eggs",
+				() -> new ConsumableItem(bowlFoodItem(FoodValues.BACON_AND_EGGS).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(160000).insulinResponse(0).build()), true));
+		public static final Supplier<Item> PASTA_WITH_MEATBALLS = registerWithTab("pasta_with_meatballs",
+				() -> new ConsumableItem(bowlFoodItem(FoodValues.PASTA_WITH_MEATBALLS).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(16000).protein(40000).insulinResponse(0).build()), true));
+		public static final Supplier<Item> PASTA_WITH_MUTTON_CHOP = registerWithTab("pasta_with_mutton_chop",
+				() -> new ConsumableItem(bowlFoodItem(FoodValues.PASTA_WITH_MUTTON_CHOP).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(16000).protein(48000).insulinResponse(0).build()), true));
+		public static final Supplier<Item> MUSHROOM_RICE = registerWithTab("mushroom_rice",
+				() -> new ConsumableItem(bowlFoodItem(FoodValues.MUSHROOM_RICE).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(16000).protein(0).insulinResponse(0).build()), true));
+		public static final Supplier<Item> ROASTED_MUTTON_CHOPS = registerWithTab("roasted_mutton_chops",
+				() -> new ConsumableItem(bowlFoodItem(FoodValues.ROASTED_MUTTON_CHOPS).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(11000).protein(24000).insulinResponse(0).build()), true));
+		public static final Supplier<Item> VEGETABLE_NOODLES = registerWithTab("vegetable_noodles",
+				() -> new ConsumableItem(bowlFoodItem(FoodValues.VEGETABLE_NOODLES).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(24000).protein(0).insulinResponse(0).build()), true));
+		public static final Supplier<Item> STEAK_AND_POTATOES = registerWithTab("steak_and_potatoes",
+				() -> new ConsumableItem(bowlFoodItem(FoodValues.STEAK_AND_POTATOES).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(8000).protein(80000).insulinResponse(0).build()), true));
+		public static final Supplier<Item> RATATOUILLE = registerWithTab("ratatouille",
+				() -> new ConsumableItem(bowlFoodItem(FoodValues.RATATOUILLE).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(27000).protein(0).insulinResponse(0).build()), true));
+		public static final Supplier<Item> SQUID_INK_PASTA = registerWithTab("squid_ink_pasta",
+				() -> new ConsumableItem(bowlFoodItem(FoodValues.SQUID_INK_PASTA).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(8000).protein(48000).insulinResponse(0).build()), true));
+		public static final Supplier<Item> GRILLED_SALMON = registerWithTab("grilled_salmon",
+				() -> new ConsumableItem(bowlFoodItem(FoodValues.GRILLED_SALMON).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(24000).protein(48000).insulinResponse(0).build()), true));
 
-	public static final Supplier<Item> STUFFED_PUMPKIN_BLOCK = registerWithTab("stuffed_pumpkin_block",
-			() -> new BlockItem(ModBlocks.STUFFED_PUMPKIN_BLOCK.get(), basicItem().stacksTo(1)));
-	public static final Supplier<Item> STUFFED_PUMPKIN = registerWithTab("stuffed_pumpkin",
-			() -> new ConsumableItem(bowlFoodItem(FoodValues.STUFFED_PUMPKIN).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(12000).protein(0).insulinResponse(1200).build()), true));
+		// Feasts
+		public static final Supplier<Item> ROAST_CHICKEN_BLOCK = registerWithTab("roast_chicken_block",
+				() -> new BlockItem(ModBlocks.ROAST_CHICKEN_BLOCK.get(), basicItem().stacksTo(1)));
+		public static final Supplier<Item> ROAST_CHICKEN = registerWithTab("roast_chicken",
+				() -> new ConsumableItem(bowlFoodItem(FoodValues.ROAST_CHICKEN).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(10000).protein(18000).insulinResponse(0).build()), true));
 
-	public static final Supplier<Item> HONEY_GLAZED_HAM_BLOCK = registerWithTab("honey_glazed_ham_block",
-			() -> new BlockItem(ModBlocks.HONEY_GLAZED_HAM_BLOCK.get(), basicItem().stacksTo(1)));
-	public static final Supplier<Item> HONEY_GLAZED_HAM = registerWithTab("honey_glazed_ham",
-			() -> new ConsumableItem(bowlFoodItem(FoodValues.HONEY_GLAZED_HAM).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(8000).protein(20000).insulinResponse(3500).build()), true));
+		public static final Supplier<Item> STUFFED_PUMPKIN_BLOCK = registerWithTab("stuffed_pumpkin_block",
+				() -> new BlockItem(ModBlocks.STUFFED_PUMPKIN_BLOCK.get(), basicItem().stacksTo(1)));
+		public static final Supplier<Item> STUFFED_PUMPKIN = registerWithTab("stuffed_pumpkin",
+				() -> new ConsumableItem(bowlFoodItem(FoodValues.STUFFED_PUMPKIN).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(12000).protein(0).insulinResponse(1200).build()), true));
 
-	public static final Supplier<Item> SHEPHERDS_PIE_BLOCK = registerWithTab("shepherds_pie_block",
-			() -> new BlockItem(ModBlocks.SHEPHERDS_PIE_BLOCK.get(), basicItem().stacksTo(1)));
-	public static final Supplier<Item> SHEPHERDS_PIE = registerWithTab("shepherds_pie",
-			() -> new ConsumableItem(bowlFoodItem(FoodValues.SHEPHERDS_PIE).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(4000).protein(44000).insulinResponse(0).build()), true));
+		public static final Supplier<Item> HONEY_GLAZED_HAM_BLOCK = registerWithTab("honey_glazed_ham_block",
+				() -> new BlockItem(ModBlocks.HONEY_GLAZED_HAM_BLOCK.get(), basicItem().stacksTo(1)));
+		public static final Supplier<Item> HONEY_GLAZED_HAM = registerWithTab("honey_glazed_ham",
+				() -> new ConsumableItem(bowlFoodItem(FoodValues.HONEY_GLAZED_HAM).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(8000).protein(20000).insulinResponse(3500).build()), true));
 
-	public static final Supplier<Item> RICE_ROLL_MEDLEY_BLOCK = registerWithTab("rice_roll_medley_block",
-			() -> new BlockItem(ModBlocks.RICE_ROLL_MEDLEY_BLOCK.get(), basicItem().stacksTo(1)));
+		public static final Supplier<Item> SHEPHERDS_PIE_BLOCK = registerWithTab("shepherds_pie_block",
+				() -> new BlockItem(ModBlocks.SHEPHERDS_PIE_BLOCK.get(), basicItem().stacksTo(1)));
+		public static final Supplier<Item> SHEPHERDS_PIE = registerWithTab("shepherds_pie",
+				() -> new ConsumableItem(bowlFoodItem(FoodValues.SHEPHERDS_PIE).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(4000).protein(44000).insulinResponse(0).build()), true));
 
-	// Pet Foods
-	public static final Supplier<Item> DOG_FOOD = registerWithTab("dog_food",
-			() -> new DogFoodItem(bowlFoodItem(FoodValues.DOG_FOOD).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(0).protein(66666).insulinResponse(0).build())));
-	public static final Supplier<Item> HORSE_FEED = registerWithTab("horse_feed",
-			() -> new HorseFeedItem(basicItem().stacksTo(16)));
-}
+		public static final Supplier<Item> RICE_ROLL_MEDLEY_BLOCK = registerWithTab("rice_roll_medley_block",
+				() -> new BlockItem(ModBlocks.RICE_ROLL_MEDLEY_BLOCK.get(), basicItem().stacksTo(1)));
+
+		// Pet Foods
+		public static final Supplier<Item> DOG_FOOD = registerWithTab("dog_food",
+				() -> new DogFoodItem(bowlFoodItem(FoodValues.DOG_FOOD).component(IFWDataComponents.ifw_food_data, new IFWFoodProperties.Builder().phytonutrients(555).protein(555).insulinResponse(555).build())));
+		public static final Supplier<Item> HORSE_FEED = registerWithTab("horse_feed",
+				() -> new HorseFeedItem(basicItem().stacksTo(16)));
+	}

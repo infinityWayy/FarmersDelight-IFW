@@ -11,12 +11,15 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 import vectorwing.farmersdelight.FarmersDelight;
 import vectorwing.farmersdelight.common.item.component.ItemStackWrapper;
 import vectorwing.farmersdelight.common.utility.RegistryUtils;
-
 import java.util.List;
+import net.minecraft.core.registries.Registries;
 
-public class ModDataComponents
-{
-	public static final DeferredRegister.DataComponents DATA_COMPONENTS = DeferredRegister.createDataComponents(FarmersDelight.MODID);
+public class ModDataComponents {
+	public static final DeferredRegister.DataComponents DATA_COMPONENTS = DeferredRegister.createDataComponents(
+			Registries.DATA_COMPONENT_TYPE,
+			FarmersDelight.MODID
+	);
+
 	public static final RegistryUtils.EnchantmentEffectComponents ENCHANTMENT_EFFECT_COMPONENTS = RegistryUtils.createEnchantmentEffectComponents(FarmersDelight.MODID);
 
 	// Cooking Pot

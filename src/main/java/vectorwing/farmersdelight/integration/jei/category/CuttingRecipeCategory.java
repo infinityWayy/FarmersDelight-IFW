@@ -71,7 +71,7 @@ public class CuttingRecipeCategory implements IRecipeCategory<RecipeHolder<Cutti
 	public void setRecipe(IRecipeLayoutBuilder builder, RecipeHolder<CuttingBoardRecipe> holder, IFocusGroup focusGroup) {
 		CuttingBoardRecipe recipe = holder.value();
 		builder.addSlot(RecipeIngredientRole.INPUT, 16, 8).addIngredients(recipe.getTool());
-		builder.addSlot(RecipeIngredientRole.INPUT, 16, 27).addIngredients(recipe.getIngredients().get(0));
+		builder.addSlot(RecipeIngredientRole.INPUT, 16, 27).addIngredients(recipe.getIngredients().getFirst());
 
 		NonNullList<ChanceResult> recipeOutputs = recipe.getRollableResults();
 
@@ -89,13 +89,15 @@ public class CuttingRecipeCategory implements IRecipeCategory<RecipeHolder<Cutti
 					.addTooltipCallback((slotView, tooltip) -> {
 						ChanceResult output = recipeOutputs.get(index);
 						float chance = output.chance();
-						if (chance != 1)
-							tooltip.add(1, TextUtils.getTranslation("jei.chance", chance < 0.01 ? "<1" : (int) (chance * 100))
-									.withStyle(ChatFormatting.GOLD));
+						if (chance != 1) {
+							tooltip.add(
+									TextUtils.getTranslation("jei.chance", chance < 0.01 ? "<1" : (int) (chance * 100))
+											.withStyle(ChatFormatting.GOLD)
+                    );
+						}
 					});
 		}
 	}
-
 	@Override
 	public void draw(RecipeHolder<CuttingBoardRecipe> holder, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
 		CuttingBoardRecipe recipe = holder.value();

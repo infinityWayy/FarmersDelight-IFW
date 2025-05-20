@@ -1,8 +1,8 @@
 package vectorwing.farmersdelight.integration.jei.category;
 
-import com.google.common.collect.ImmutableList;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.builder.ITooltipBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
@@ -12,8 +12,6 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.core.Holder;
-import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -23,7 +21,6 @@ import vectorwing.farmersdelight.FarmersDelight;
 import vectorwing.farmersdelight.common.registry.ModBlocks;
 import vectorwing.farmersdelight.common.registry.ModItems;
 import vectorwing.farmersdelight.common.tag.ModTags;
-import vectorwing.farmersdelight.common.utility.ClientRenderUtils;
 import vectorwing.farmersdelight.common.utility.TextUtils;
 import vectorwing.farmersdelight.integration.jei.FDRecipeTypes;
 import vectorwing.farmersdelight.integration.jei.resource.DecompositionDummy;
@@ -37,8 +34,7 @@ import java.util.stream.Collectors;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class DecompositionRecipeCategory implements IRecipeCategory<DecompositionDummy>
-{
+public class DecompositionRecipeCategory implements IRecipeCategory<DecompositionDummy> {
 	public static final ResourceLocation UID = ResourceLocation.fromNamespaceAndPath(FarmersDelight.MODID, "decomposition");
 	private static final int slotSize = 22;
 
@@ -94,18 +90,21 @@ public class DecompositionRecipeCategory implements IRecipeCategory<Decompositio
 		this.slotIcon.draw(guiGraphics, 63, 53);
 	}
 
+
 	@Override
-	public List<Component> getTooltipStrings(DecompositionDummy recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
-		if (ClientRenderUtils.isCursorInsideBounds(40, 38, 11, 11, mouseX, mouseY)) {
-			return ImmutableList.of(translateKey(".light"));
+	public void getTooltip(ITooltipBuilder tooltip, DecompositionDummy recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
+		if (isMouseInBounds(mouseX, mouseY, 40, 38, 11, 11)) {
+			tooltip.add(translateKey(".light"));
+		} else if (isMouseInBounds(mouseX, mouseY, 53, 38, 11, 11)) {
+			tooltip.add(translateKey(".fluid"));
+		} else if (isMouseInBounds(mouseX, mouseY, 67, 38, 11, 11)) {
+			tooltip.add(translateKey(".accelerators"));
 		}
-		if (ClientRenderUtils.isCursorInsideBounds(53, 38, 11, 11, mouseX, mouseY)) {
-			return ImmutableList.of(translateKey(".fluid"));
-		}
-		if (ClientRenderUtils.isCursorInsideBounds(67, 38, 11, 11, mouseX, mouseY)) {
-			return ImmutableList.of(translateKey(".accelerators"));
-		}
-		return Collections.emptyList();
+
+	}
+
+	private boolean isMouseInBounds(double mouseX, double mouseY, int x, int y, int width, int height) {
+		return mouseX >= x && mouseX <= x + width && mouseY >= y && mouseY <= y + height;
 	}
 
 	private static MutableComponent translateKey(@Nonnull String suffix) {

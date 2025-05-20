@@ -1,6 +1,9 @@
 package vectorwing.farmersdelight.data.recipe;
 
+import huix.infinity.common.world.item.IFWBucketItem;
+import huix.infinity.common.world.item.IFWItems;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
@@ -196,6 +199,16 @@ public class CraftingRecipes
 				.define('W', Items.WATER_BUCKET)
 				.unlockedBy("has_iron_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT))
 				.save(output);
+		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.COOKING_POT.get())
+				.pattern("bSb")
+				.pattern("iWi")
+				.pattern("iii")
+				.define('b', Items.BRICK)
+				.define('i', Tags.Items.INGOTS_IRON)
+				.define('S', IFWItems.wooden_shovel)
+				.define('W', TagKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath("InfinityWay", "waterBucket")))
+				.unlockedBy("has_iron_ingot", InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT))
+				.save(output, ResourceLocation.fromNamespaceAndPath(FarmersDelight.MODID, "ifw_cooking_pot"));
 		ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, ModBlocks.BASKET.get())
 				.pattern("b b")
 				.pattern("# #")

@@ -2,6 +2,7 @@ package vectorwing.farmersdelight.integration.jei.category;
 
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
+import mezz.jei.api.gui.builder.ITooltipBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
 import mezz.jei.api.gui.drawable.IDrawableAnimated;
 import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
@@ -21,21 +22,16 @@ import net.minecraft.world.item.crafting.RecipeHolder;
 import vectorwing.farmersdelight.FarmersDelight;
 import vectorwing.farmersdelight.common.crafting.CookingPotRecipe;
 import vectorwing.farmersdelight.common.registry.ModItems;
-import vectorwing.farmersdelight.common.utility.ClientRenderUtils;
 import vectorwing.farmersdelight.common.utility.RecipeUtils;
 import vectorwing.farmersdelight.common.utility.TextUtils;
 import vectorwing.farmersdelight.integration.jei.FDRecipeTypes;
 
 import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class CookingRecipeCategory implements IRecipeCategory<RecipeHolder<CookingPotRecipe>>
-{
+public class CookingRecipeCategory implements IRecipeCategory<RecipeHolder<CookingPotRecipe>> {
 	protected final IDrawable heatIndicator;
 	protected final IDrawable timeIcon;
 	protected final IDrawable expIcon;
@@ -114,23 +110,22 @@ public class CookingRecipeCategory implements IRecipeCategory<RecipeHolder<Cooki
 	}
 
 	@Override
-	public List<Component> getTooltipStrings(RecipeHolder<CookingPotRecipe> holder, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
-		CookingPotRecipe recipe = holder.value();
-		if (ClientRenderUtils.isCursorInsideBounds(61, 2, 22, 28, mouseX, mouseY)) {
-			List<Component> tooltipStrings = new ArrayList<>();
+	public void getTooltip(ITooltipBuilder tooltip, RecipeHolder<CookingPotRecipe> recipe, IRecipeSlotsView recipeSlotsView, double mouseX, double mouseY) {
+		CookingPotRecipe cookingRecipe = recipe.value();
 
-			int cookTime = recipe.getCookTime();
+		if (mouseX >= 61 && mouseX <= 61 + 22 && mouseY >= 2 && mouseY <= 2 + 28) {
+			int cookTime = cookingRecipe.getCookTime();
 			if (cookTime > 0) {
 				int cookTimeSeconds = cookTime / 20;
-				tooltipStrings.add(Component.translatable("gui.jei.category.smelting.time.seconds", cookTimeSeconds));
-			}
-			float experience = recipe.getExperience();
-			if (experience > 0) {
-				tooltipStrings.add(Component.translatable("gui.jei.category.smelting.experience", experience));
+				tooltip.add(Component.translatable("gui.jei.category.smelting.time.seconds")
+						.append(Component.literal(" " + cookTimeSeconds)));
 			}
 
-			return tooltipStrings;
+			float experience = cookingRecipe.getExperience();
+			if (experience > 0) {
+				tooltip.add(Component.translatable("gui.jei.category.smelting.experience")
+						.append(Component.literal(" " + experience)));
+			}
 		}
-		return Collections.emptyList();
 	}
 }
